@@ -3,10 +3,12 @@
 
     <!--    search panel-->
     <div style="margin-bottom: 20px">
-      <el-input style="width: 240px" placeholder="Please enter Book name" v-model="params.name" ></el-input>
-      <el-input style="width: 240px; margin-left: 5px" placeholder="Please enter Book ID" v-model="params.phone"></el-input>
-      <el-button style="margin-left: 5px" type="primary"><i class="el-icon-search" @click="load"  ></i> Search</el-button>
-      <el-button style="margin-left: 5px" type="warning"><i class="el-icon-refresh" @click="reset"  ></i> Reset</el-button>
+      <el-input style="width: 240px" placeholder="Please enter Book name" v-model="params.name"></el-input>
+      <el-input style="width: 240px; margin-left: 5px" placeholder="Please enter phone"
+                v-model="params.phone"></el-input>
+      <el-button style="margin-left: 5px" type="primary" @click="load" ><i class="el-icon-search" ></i> Search</el-button>
+      <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> Reset
+      </el-button>
 
     </div>
 
@@ -17,7 +19,7 @@
       <el-table-column prop="age" label="age"></el-table-column>
       <el-table-column prop="sex" label="sex"></el-table-column>
       <el-table-column prop="phone" label="phone"></el-table-column>
-
+      <el-table-column prop="address" label="address"></el-table-column>
     </el-table>
 
     <!--    Pagination-->
@@ -65,8 +67,8 @@ export default {
       //   console.log(res)
       //   this.tableData = res
       // })
-      request.get('/user/page',{
-        params:this.params
+      request.get('/user/page', {
+        params: this.params
       }).then(res => {
         if (res.code === '200') {
           this.tableData = res.data.list
@@ -74,7 +76,7 @@ export default {
         }
       })
     },
-    reset(){
+    reset() {
       this.params = {
         pageNum: 1,
         pageSize: 10,
@@ -83,7 +85,7 @@ export default {
       }
       this.load()
     },
-    handleCurrentChange(pageNum){
+    handleCurrentChange(pageNum) {
       // click page number button
       console.log(pageNum)
       this.params.pageNum = pageNum
