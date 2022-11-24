@@ -1,0 +1,22 @@
+server:
+  port: 9090
+
+spring:
+  devtools:
+    restart:
+      enabled: true  #???????
+      additional-paths: src/main/java #????
+      exclude: WEB-INF/**
+  thymeleaf:
+            cache: false #??Thymeleaf?????????
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/library-management?serverTimezone=America/New_York
+    username: root
+    password: root123
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
