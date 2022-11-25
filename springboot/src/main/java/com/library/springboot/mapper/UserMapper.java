@@ -14,4 +14,12 @@ public interface UserMapper {
 
 //    @Select("select * from user where name like concat('%', #{ name }, '%') and phone like concat('%', #{ phone }, '%')")
     List<User> listByCondition(UserPageRequest userPageRequest);
+
+    void save(User user);
+
+    User getById(Integer id);
+
+    void updateById(User user);
+
+    void deleteById(Integer id);
 }
