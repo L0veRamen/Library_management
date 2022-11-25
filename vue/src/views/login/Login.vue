@@ -48,10 +48,11 @@ export default {
           request.post('/admin/login', this.admin).then(res => {
             if (res.code === '200') {
               this.$notify.success("Log In Successfully !!!")
-              this.$router.push('/')
               if (res.data !== null){
                 Cookies.set('admin', JSON.stringify(res.data))
               }
+              // set cookies first then router guard redirect to main page
+              this.$router.push('/')
             } else {
               this.$notify.error(res.msg)
             }

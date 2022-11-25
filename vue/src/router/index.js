@@ -9,6 +9,7 @@ import Add from "@/views/admin/Add";
 import Login from "@/views/login/Login";
 import Layout from "@/views/Layout";
 import Home from "@/views/home/HomeView"
+import Cookies from "js-cookie";
 
 Vue.use(VueRouter)
 
@@ -67,12 +68,26 @@ const routes = [
     ]
   },
 
+    // ===== 404 =====
+  {
+    path: '*',
+    component: ()=> import('@/views/404')
+  },
+
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to,from,next)=>{
+  if (to.path === '/login') next()
+  const admin = Cookies.get('admin')
+  if (!admin && to.path !== '/login') return next('/login') //back to login page
+  // visit /home, cookies has admin data, then go to page
+  next()
 })
 
 export default router
