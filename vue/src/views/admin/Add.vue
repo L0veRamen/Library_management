@@ -51,7 +51,7 @@ export default {
               this.$notify.success('Add Admin Successfully !!!')
               // this.form = {sex: 'M'}
               this.$refs['ruleForm'].resetFields()
-              this.$router.push("/admin")
+              this.$router.push("/adminList")
             }else{
               this.$notify.error(res.msg)
             }

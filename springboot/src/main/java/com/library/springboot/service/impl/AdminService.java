@@ -10,6 +10,7 @@ import com.library.springboot.entity.Admin;
 import com.library.springboot.exception.ServiceException;
 import com.library.springboot.mapper.AdminMapper;
 import com.library.springboot.service.IAdminService;
+import com.library.springboot.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class AdminService implements IAdminService {
     @Autowired
     AdminMapper adminMapper;
 
+    private static final String DEFAULT_PASSWORD = "123";
+    private static final String PASSWORD_SALT = "test";
+
     @Override
     public List<Admin> list() {
         return adminMapper.list();
@@ -39,7 +43,12 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public void save(Admin obj) {
+    public void save(Admin obj) throws Exception {
+        if (obj.getPassword() == null){
+            // default password test123
+            obj.setPassword(DEFAULT_PASSWORD);
+        }
+        obj.setPassword(MD5Util.getEncryptedPwd(obj.getPassword()+ PASSWORD_SALT)); // MD5 encryption add salt
         adminMapper.save(obj);
     }
 

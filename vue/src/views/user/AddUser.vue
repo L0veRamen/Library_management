@@ -73,7 +73,7 @@ export default {
               this.$notify.success('Add User Successfully !!!')
               // this.form = {sex: 'M'}
               this.$refs['ruleForm'].resetFields()
-              this.$router.push("/user")
+              this.$router.push("/userList")
             }else{
               this.$notify.error(res.msg)
             }

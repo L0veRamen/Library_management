@@ -20,7 +20,7 @@ public class AdminController {
     IAdminService adminService;
 
     @PostMapping("/save")
-    public Result save(@RequestBody Admin obj) {
+    public Result save(@RequestBody Admin obj) throws Exception {
         adminService.save(obj);
         return Result.success();
     }

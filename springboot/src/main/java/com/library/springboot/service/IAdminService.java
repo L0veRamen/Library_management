@@ -15,7 +15,7 @@ public interface IAdminService {
 
     PageInfo<Admin> page(BaseRequest baseRequest);
 
-    void save(Admin obj);
+    void save(Admin obj) throws Exception;
 
     Admin getById(Integer id);
 
