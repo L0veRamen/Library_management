@@ -5,10 +5,10 @@
       <el-form-item label="UserName" prop="username">
         <el-input v-model="form.username" placeholder="please enter username"></el-input>
       </el-form-item>
-      <el-form-item label="Phone">
+      <el-form-item label="Phone" prop="phone">
         <el-input v-model="form.phone" placeholder="please enter phone"></el-input>
       </el-form-item>
-      <el-form-item label="Email">
+      <el-form-item label="Email" prop="email">
         <el-input v-model="form.email" placeholder="please enter email"></el-input>
       </el-form-item>
     </el-form>
@@ -30,29 +30,14 @@ import request from "@/utils/request"
 export default {
   name: "Add",
   data(){
-    const checkAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error('age is null'));
-      }
-      if (!/^[0-9]+$/.test(value)) {
-        callback(new Error('please enter number'));
-      }
-      if (parseInt(value)>120 || parseInt(value)<=0){
-        callback(new Error('please valid number'));
-      }
-      callback()
-    }
     return{
       form:{
-        sex: 'M'
       },
       rules: {
-        name: [
-          {required: true, message: 'please enter name', trigger: 'blur'},
+        username: [
+          {required: true, message: 'please enter username', trigger: 'blur'},
+          {min:3, max:10,message: ' 3 to 10 length', trigger: 'blur'}
         ],
-        age:[
-          {validator: checkAge,trigger:'blur'}
-        ]
       }
       }
     },
@@ -63,7 +48,7 @@ export default {
           request.post('/admin/save', this.form).then(res =>{
             console.log("form data: "+this.form)
             if (res.code === '200'){
-              this.$notify.success('Add User Successfully !!!')
+              this.$notify.success('Add Admin Successfully !!!')
               // this.form = {sex: 'M'}
               this.$refs['ruleForm'].resetFields()
               this.$router.push("/admin")

@@ -8,15 +8,14 @@
       <el-form-item label="Age" prop="age" >
         <el-input v-model="form.age" placeholder="please enter age"></el-input>
       </el-form-item>
-      <el-form-item label="Sex">
+      <el-form-item label="Sex" prop="sex">
         <el-radio v-model="form.sex" label="M">M</el-radio>
         <el-radio v-model="form.sex" label="F">F</el-radio>
-
       </el-form-item>
-      <el-form-item label="Phone">
+      <el-form-item label="Phone" prop="phone">
         <el-input v-model="form.phone" placeholder="please enter phone"></el-input>
       </el-form-item>
-      <el-form-item label="Address">
+      <el-form-item label="Address" prop="address">
         <el-input v-model="form.address" placeholder="please enter address"></el-input>
       </el-form-item>
     </el-form>

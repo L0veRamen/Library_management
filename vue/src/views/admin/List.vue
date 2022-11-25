@@ -3,10 +3,12 @@
 
     <!--    search panel-->
     <div style="margin-bottom: 20px">
-      <el-input style="width: 240px" placeholder="Please enter Book name" v-model="params.name"></el-input>
+      <el-input style="width: 240px" placeholder="Please enter username" v-model="params.username"></el-input>
       <el-input style="width: 240px; margin-left: 5px" placeholder="Please enter phone"
                 v-model="params.phone"></el-input>
-      <el-button style="margin-left: 5px" type="primary" @click="load" ><i class="el-icon-search" ></i> Search</el-button>
+      <el-input style="width: 240px; margin-left: 5px" placeholder="Please enter email"
+                v-model="params.email"></el-input>
+      <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> Search</el-button>
       <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> Reset
       </el-button>
 
@@ -23,8 +25,8 @@
 
       <el-table-column label="Edit">
         <template v-slot="scope">
-<!--  scope.row is current row data-->
-          <el-button type="primary" @click="$router.push('/editAdmin?id='+scope.row.id)" >Edit</el-button>
+          <!--  scope.row is current row data-->
+          <el-button type="primary" @click="$router.push('/editAdmin?id='+scope.row.id)">Edit</el-button>
 
           <el-popconfirm
               style="margin-left: 10px"
@@ -69,8 +71,9 @@ export default {
       params: {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        phone: ''
+        username: '',
+        phone: '',
+        email:''
       }
 
     }
@@ -80,10 +83,6 @@ export default {
   },
   methods: {
     load() {
-      // fetch('http://localhost:9090/user/list').then(res=>res.json()).then(res=>{
-      //   console.log(res)
-      //   this.tableData = res
-      // })
       request.get('/admin/page', {
         params: this.params
       }).then(res => {
@@ -97,8 +96,9 @@ export default {
       this.params = {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        phone: ''
+        username: '',
+        phone: '',
+        email: ''
       }
       this.load()
     },
@@ -108,12 +108,12 @@ export default {
       this.params.pageNum = pageNum
       this.load()
     },
-    del(id){
-      request.delete("/admin/delete/"+ id).then(res=>{
-        if (res.code === '200'){
+    del(id) {
+      request.delete("/admin/delete/" + id).then(res => {
+        if (res.code === '200') {
           this.$notify.success("Delete admin successfully !!!")
           this.load()
-        }else{
+        } else {
           this.$notify.error(res.msg)
         }
       })

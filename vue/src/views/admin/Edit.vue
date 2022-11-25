@@ -46,8 +46,8 @@ export default {
       request.put('/admin/update', this.form).then(res =>{
         console.log("form data: "+this.form)
         if (res.code === '200'){
-          this.$notify.success('Update User Successfully !!!')
-          this.$router.push("/Admin")// direct to user list page
+          this.$notify.success('Update Admin Successfully !!!')
+          this.$router.push("/admin")// direct to admin list page
         }else{
           this.$notify.error(res.msg)
         }
