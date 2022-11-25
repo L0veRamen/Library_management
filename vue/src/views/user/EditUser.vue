@@ -52,7 +52,7 @@ export default {
         console.log("form data: "+this.form)
         if (res.code === '200'){
           this.$notify.success('Update User Successfully !!!')
-          this.$router.push("/user")// direct to user list page
+          this.$router.push("/userList")// direct to user list page
         }else{
           this.$notify.error(res.msg)
         }

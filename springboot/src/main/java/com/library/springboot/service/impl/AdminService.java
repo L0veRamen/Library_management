@@ -2,20 +2,25 @@ package com.library.springboot.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.library.springboot.common.Result;
+import com.library.springboot.controller.dto.LoginDTO;
 import com.library.springboot.controller.request.BaseRequest;
+import com.library.springboot.controller.request.LoginRequest;
 import com.library.springboot.entity.Admin;
+import com.library.springboot.exception.ServiceException;
 import com.library.springboot.mapper.AdminMapper;
 import com.library.springboot.service.IAdminService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.rmi.server.ServerCloneException;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
+@Slf4j
 public class AdminService implements IAdminService {
     @Autowired
     AdminMapper adminMapper;
@@ -52,5 +57,16 @@ public class AdminService implements IAdminService {
     @Override
     public void deleteById(Integer id) {
         adminMapper.deleteById(id);
+    }
+
+    @Override
+    public LoginDTO login(LoginRequest request) {
+        Admin admin = adminMapper.getByUsernameAndPassword(request);
+        if (admin == null){
+            throw new ServiceException("username or password error !!!");
+        }
+        LoginDTO loginDTO = new LoginDTO();
+        BeanUtils.copyProperties(admin, loginDTO);
+        return loginDTO;
     }
 }

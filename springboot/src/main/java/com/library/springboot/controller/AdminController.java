@@ -1,7 +1,9 @@
 package com.library.springboot.controller;
 
 import com.library.springboot.common.Result;
+import com.library.springboot.controller.dto.LoginDTO;
 import com.library.springboot.controller.request.AdminPageRequest;
+import com.library.springboot.controller.request.LoginRequest;
 import com.library.springboot.entity.Admin;
 import com.library.springboot.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,13 @@ public class AdminController {
         adminService.save(obj);
         return Result.success();
     }
+
+    @PostMapping("/login")
+    public Result login(@RequestBody LoginRequest request) {
+        LoginDTO login = adminService.login(request);
+        return Result.success(login);
+    }
+
 
     @PutMapping("/update")
     public Result update(@RequestBody Admin obj) {
