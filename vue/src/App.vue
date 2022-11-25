@@ -23,20 +23,15 @@
             <el-menu-item index="addUser">User Add</el-menu-item>
             <el-menu-item index="user">User List</el-menu-item>
           </el-submenu>
-<!--          <el-submenu index="/">-->
-<!--            <template slot="title">-->
-<!--              <i class="el-icon-notebook-1"></i>-->
-<!--              <span>Bookshelf2</span>-->
-<!--            </template>-->
-<!--            <el-menu-item index="">Find</el-menu-item>-->
-<!--          </el-submenu>-->
-<!--          <el-submenu index="/">-->
-<!--            <template slot="title">-->
-<!--              <i class="el-icon-notebook-1"></i>-->
-<!--              <span>Bookshelf3</span>-->
-<!--            </template>-->
-<!--            <el-menu-item index="">Find</el-menu-item>-->
-<!--          </el-submenu>-->
+          <el-submenu index="/">
+            <template slot="title">
+              <i class="el-icon-s-custom"></i>
+              <span>Admin</span>
+            </template>
+            <el-menu-item index="addAdmin">Admin Add</el-menu-item>
+            <el-menu-item index="admin">Admin List</el-menu-item>
+          </el-submenu>
+
         </el-menu>
       </div>
 
