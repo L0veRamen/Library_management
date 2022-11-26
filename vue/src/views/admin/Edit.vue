@@ -29,7 +29,7 @@
 import request from "@/utils/request"
 
 export default {
-  name: "Edit",
+  name: "EditAdmin",
   data(){
     return{
       form:{}

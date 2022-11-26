@@ -28,7 +28,7 @@
 import request from "@/utils/request"
 
 export default {
-  name: "Add",
+  name: "AddAdmin",
   data(){
     return{
       form:{

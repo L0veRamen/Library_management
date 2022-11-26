@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.library.springboot.controller.dto.LoginDTO;
 import com.library.springboot.controller.request.BaseRequest;
 import com.library.springboot.controller.request.LoginRequest;
+import com.library.springboot.controller.request.PasswordRequest;
 import com.library.springboot.entity.Admin;
 import com.library.springboot.exception.ServiceException;
 import com.library.springboot.mapper.AdminMapper;
@@ -53,6 +54,7 @@ public class AdminService implements IAdminService {
             obj.setPassword(DEFAULT_PASSWORD);
         }
         obj.setPassword(encryptPassword(obj.getPassword())); // MD5 encryption
+        obj.setStatus(true);
         adminMapper.save(obj);
     }
 
@@ -75,12 +77,25 @@ public class AdminService implements IAdminService {
     @Override
     public LoginDTO login(LoginRequest request){
         request.setPassword(encryptPassword(request.getPassword()));
-        Admin admin = adminMapper.getByUsernameAndPassword(request);
+        Admin admin = adminMapper.getByUsernameAndPassword(request.getUsername(),request.getPassword());
         if (admin == null) {
-            throw new ServiceException("username or password error !!!");
+            throw new ServiceException("username or password error");
+        }
+        if (!admin.isStatus()) {
+            throw new ServiceException("user status is not active");
         }
         LoginDTO loginDTO = new LoginDTO();
         BeanUtils.copyProperties(admin, loginDTO);
         return loginDTO;
+    }
+
+    @Override
+    public void changePass(PasswordRequest request) {
+        // remember to encrypt new password
+        request.setNewPassword(encryptPassword(request.getNewPassword()));
+        int count = adminMapper.updatePassword(request);
+        if (count <= 0){
+            throw new ServiceException("change new password fail");
+        }
     }
 }

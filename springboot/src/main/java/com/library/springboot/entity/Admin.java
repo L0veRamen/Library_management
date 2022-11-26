@@ -18,4 +18,6 @@ public class Admin {
 
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT-5")
     private Date updatetime;
+
+    private boolean status;
 }
