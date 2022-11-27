@@ -33,38 +33,21 @@ const routes = [
         name: 'Home',
         component: Home
       },
+
       // ======== User ===========
-      {
-        path: 'userList',
-        name: 'UserList',
-        component: User
-      },
-      {
-        path: 'addUser',
-        name: 'AddUser',
-        component: AddUser
-      },
-      {
-        path: 'editUser',
-        name: 'EditUser',
-        component: EditUser
-      },
+      {path: 'userList', name: 'UserList', component: User},
+      {path: 'addUser', name: 'AddUser', component: AddUser},
+      {path: 'editUser', name: 'EditUser', component: EditUser},
+
       // ======== Admin ===========
-      {
-        path: 'adminList',
-        name: 'AdminList',
-        component: List
-      },
-      {
-        path: 'addAdmin',
-        name: 'AddAdmin',
-        component: Add
-      },
-      {
-        path: 'editAdmin',
-        name: 'EditAdmin',
-        component: Edit
-      },
+      {path: 'adminList', name: 'AdminList', component: List},
+      {path: 'addAdmin', name: 'AddAdmin', component: Add},
+      {path: 'editAdmin', name: 'EditAdmin', component: Edit},
+
+      // ======== Category ===========
+      {path: 'categoryList', name: 'CategoryList', component: ()=> import('@/views/category/List.vue')},
+      {path: 'addCategory', name: 'AddCategory', component: ()=> import('@/views/category/Add.vue')},
+      {path: 'editCategory', name: 'EditCategory', component: ()=> import('@/views/category/Edit.vue')},
     ]
   },
 

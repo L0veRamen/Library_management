@@ -13,9 +13,11 @@ import com.library.springboot.service.IAdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +32,8 @@ public class AdminService implements IAdminService {
     private static final String PASSWORD_SALT = "test123";
 
     //MD5 encryption
-    private String encryptPassword(String password){
-        return DigestUtils.md5DigestAsHex((password +PASSWORD_SALT).getBytes());
+    private String encryptPassword(String password) {
+        return DigestUtils.md5DigestAsHex((password + PASSWORD_SALT).getBytes());
     }
 
     @Override
@@ -50,12 +52,18 @@ public class AdminService implements IAdminService {
     @Override
     public void save(Admin obj) {
         //default password test123
-        if (obj.getPassword()== null){
+        if (obj.getPassword() == null) {
             obj.setPassword(DEFAULT_PASSWORD);
         }
         obj.setPassword(encryptPassword(obj.getPassword())); // MD5 encryption
         obj.setStatus(true);
-        adminMapper.save(obj);
+
+        try {
+            adminMapper.save(obj);
+        } catch (DuplicateKeyException e) {
+                log.error("insert data fail, username:{}", obj.getUsername(),e);
+                throw new ServiceException("duplicate username !!! ");
+        }
     }
 
     @Override
@@ -75,12 +83,27 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public LoginDTO login(LoginRequest request){
-        request.setPassword(encryptPassword(request.getPassword()));
-        Admin admin = adminMapper.getByUsernameAndPassword(request.getUsername(),request.getPassword());
+    public LoginDTO login(LoginRequest request) {
+        Admin admin = null;
+        try {
+            admin = adminMapper.getByUsername(request.getUsername());
+
+        } catch (Exception e) {
+            log.error("find by username:{} fail", request.getUsername());
+            throw new ServiceException("username error");
+        }
+
+//        Admin admin = adminMapper.getByUsernameAndPassword(request.getUsername(),request.getPassword());
+
         if (admin == null) {
             throw new ServiceException("username or password error");
         }
+        // find if password is valid
+        String encryptPass = encryptPassword(request.getPassword());// encrypt password
+        if (!encryptPass.equals(admin.getPassword())) {
+            throw new ServiceException("password error");
+        }
+
         if (!admin.isStatus()) {
             throw new ServiceException("user status is not active");
         }
@@ -94,7 +117,7 @@ public class AdminService implements IAdminService {
         // remember to encrypt new password
         request.setNewPassword(encryptPassword(request.getNewPassword()));
         int count = adminMapper.updatePassword(request);
-        if (count <= 0){
+        if (count <= 0) {
             throw new ServiceException("change new password fail");
         }
     }

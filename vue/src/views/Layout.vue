@@ -48,6 +48,14 @@
             <el-menu-item index="/addAdmin">Admin Add</el-menu-item>
             <el-menu-item index="/adminList">Admin List</el-menu-item>
           </el-submenu>
+          <el-submenu index="category">
+            <template slot="title">
+              <i class="el-icon-document"></i>
+              <span>Category</span>
+            </template>
+            <el-menu-item index="/addCategory">Add Category</el-menu-item>
+            <el-menu-item index="/categoryList">Category List</el-menu-item>
+          </el-submenu>
 
         </el-menu>
       </div>
