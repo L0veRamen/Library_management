@@ -56,6 +56,14 @@
             <el-menu-item index="/addCategory">Add Category</el-menu-item>
             <el-menu-item index="/categoryList">Category List</el-menu-item>
           </el-submenu>
+          <el-submenu index="book">
+            <template slot="title">
+              <i class="el-icon-notebook-1"></i>
+              <span>Book</span>
+            </template>
+            <el-menu-item index="/addBook">Add Book</el-menu-item>
+            <el-menu-item index="/bookList">Book List</el-menu-item>
+          </el-submenu>
 
         </el-menu>
       </div>

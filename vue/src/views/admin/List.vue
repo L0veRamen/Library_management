@@ -19,7 +19,7 @@
       <el-table-column prop="id" label="id" width="80"></el-table-column>
       <el-table-column prop="username" label="username"></el-table-column>
       <el-table-column prop="phone" label="phone"></el-table-column>
-      <el-table-column prop="email" label="email"></el-table-column>
+      <el-table-column prop="email" label="email" width="200"></el-table-column>
       <el-table-column prop="createtime" label="createtime"></el-table-column>
       <el-table-column prop="updatetime" label="updatetime"></el-table-column>
 
@@ -34,7 +34,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Edit" width="230">
+      <el-table-column label="Edit" width="300">
         <template v-slot="scope">
           <!--  scope.row is current row data-->
           <el-button type="primary" @click="$router.push('/editAdmin?id='+scope.row.id)">Edit</el-button>

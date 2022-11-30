@@ -45,7 +45,7 @@ export default {
           request.post('/category/save', this.form).then(res =>{
             console.log("form data: "+this.form)
             if (res.code === '200'){
-              this.$notify.success('Add category Successfully !!!')
+              this.$notify.success('Add category Successfully')
               // this.form = {sex: 'M'}
               this.$refs['ruleForm'].resetFields()
               this.$router.push("/categoryList")

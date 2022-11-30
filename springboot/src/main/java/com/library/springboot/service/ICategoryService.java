@@ -2,7 +2,6 @@ package com.library.springboot.service;
 
 import com.github.pagehelper.PageInfo;
 import com.library.springboot.controller.request.BaseRequest;
-import com.library.springboot.entity.Admin;
 import com.library.springboot.entity.Category;
 
 import java.util.List;

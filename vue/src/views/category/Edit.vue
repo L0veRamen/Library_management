@@ -49,7 +49,7 @@ export default {
       request.put('/category/update', this.form).then(res =>{
         console.log("form data: "+this.form)
         if (res.code === '200'){
-          this.$notify.success('Update category Successfully !!!')
+          this.$notify.success('Update category Successfully')
           this.$router.push("/categoryList")// direct to admin list page
         }else{
           this.$notify.error(res.msg)
