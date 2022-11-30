@@ -5,6 +5,6 @@ This is COMP354 Project -- My Book Library
 
 
 
-Default Login:
-username: admin 
-passsword: test123
+### Default Login: <br>
+__username__: admin <br>
+__passsword__: test123
