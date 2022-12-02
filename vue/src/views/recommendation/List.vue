@@ -2,15 +2,15 @@
   <div>
 
     <!--    search panel-->
-    <div style="margin-bottom: 20px">
-      <el-input style="width: 240px" placeholder="Please enter book name" v-model="params.name"></el-input>
-      <el-input style="width: 240px" placeholder="Please enter book number" v-model="params.bookNo"></el-input>
+<!--    <div style="margin-bottom: 20px">-->
+<!--      <el-input style="width: 240px" placeholder="Please enter book name" v-model="params.name"></el-input>-->
+<!--      <el-input style="width: 240px" placeholder="Please enter book number" v-model="params.bookNo"></el-input>-->
 
-      <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> Search</el-button>
-      <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> Reset
-      </el-button>
+<!--      <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> Search</el-button>-->
+<!--      <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> Reset-->
+<!--      </el-button>-->
 
-    </div>
+<!--    </div>-->
 
 
     <el-table :data="tableData" stripe>
@@ -33,26 +33,26 @@
         </template>
       </el-table-column>
       <el-table-column prop="author" label="author"></el-table-column>
-      <el-table-column prop="publisher" label="publisher" width="100"></el-table-column>
+      <el-table-column prop="publisher" label="publisher"></el-table-column>
       <el-table-column prop="category" label="category"></el-table-column>
       <el-table-column prop="bookNo" label="bookNo"></el-table-column>
 <!--      <el-table-column prop="createtime" label="createtime"></el-table-column>-->
 <!--      <el-table-column prop="updatetime" label="updatetime"></el-table-column>-->
 
-      <el-table-column label="Edit" width="200">
-        <template v-slot="scope">
-          <!--  scope.row is current row data-->
-          <el-button type="primary" @click="$router.push('/editBook?id='+scope.row.id)">Edit</el-button>
+<!--      <el-table-column label="Edit" width="200">-->
+<!--        <template v-slot="scope">-->
+<!--          &lt;!&ndash;  scope.row is current row data&ndash;&gt;-->
+<!--          <el-button type="primary" @click="$router.push('/editBook?id='+scope.row.id)">Edit</el-button>-->
 
-          <el-popconfirm
-              style="margin-left: 10px"
-              title="Are you sure you want to Delete ?"
-              @confirm="del(scope.row.id)"
-          >
-            <el-button type="danger" slot="reference">Delete</el-button>
-          </el-popconfirm>
-        </template>
-      </el-table-column>
+<!--          <el-popconfirm-->
+<!--              style="margin-left: 10px"-->
+<!--              title="Are you sure you want to Delete ?"-->
+<!--              @confirm="del(scope.row.id)"-->
+<!--          >-->
+<!--            <el-button type="danger" slot="reference">Delete</el-button>-->
+<!--          </el-popconfirm>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
 
 
     </el-table>
@@ -79,7 +79,7 @@ import request from "@/utils/request";
 import Cookies from "js-cookie";
 
 export default {
-  name: 'BookList',
+  name: 'RecommendationList',
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},

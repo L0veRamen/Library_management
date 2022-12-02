@@ -2,10 +2,10 @@
   <div>
     <!--    Header-->
     <div style="height: 60px; line-height: 60px; background-color: white; margin-bottom: 2px; display: flex ">
-      <div style="width: 300px">
+      <div style="width: 400px">
         <img src="@/assets/logo.png" alt="logo"
              style="width: 40px; height: 40px; position:relative; top: 10px; left: 20px;">
-        <span style="margin-left: 40px; font-size: 24px">My Book Library</span>
+        <span style="margin-left: 40px; font-size: 24px">My Book Management</span>
       </div>
       <div style="flex:1; text-align: right; padding-right: 20px">
         <el-dropdown size="medium">
@@ -26,7 +26,7 @@
     <div style="display: flex">
       <!--      left panel navigation-->
       <div
-          style="width: 200px; min-height: calc(100vh - 62px);overflow: hidden; margin-right: 2px; background-color: white">
+          style="width: 230px; min-height: calc(100vh - 62px);overflow: hidden; margin-right: 2px; background-color: white">
         <el-menu :default-active="$route.path" router class="el-menu-demo">
           <el-menu-item index="/">
             <i class="el-icon-collection"></i>
@@ -64,6 +64,41 @@
             <el-menu-item index="/addBook">Add Book</el-menu-item>
             <el-menu-item index="/bookList">Book List</el-menu-item>
           </el-submenu>
+          <el-submenu index="fav">
+            <template slot="title">
+              <i class="el-icon-coffee-cup"></i>
+              <span>Favourite</span>
+            </template>
+            <el-menu-item index="/favList">Fav List</el-menu-item>
+          </el-submenu>
+          <el-submenu index="read">
+            <template slot="title">
+              <i class="el-icon-notebook-2"></i>
+              <span>Read</span>
+            </template>
+            <el-menu-item index="/readList">Read List</el-menu-item>
+          </el-submenu>
+          <el-submenu index="reading">
+            <template slot="title">
+              <i class="el-icon-notebook-2"></i>
+              <span>Reading</span>
+            </template>
+            <el-menu-item index="/readList">Reading List</el-menu-item>
+          </el-submenu>
+          <el-submenu index="toRead">
+            <template slot="title">
+              <i class="el-icon-notebook-2"></i>
+              <span>To Read</span>
+            </template>
+            <el-menu-item index="/toReadList">To Read List</el-menu-item>
+          </el-submenu>
+          <el-submenu index="recommendation">
+            <template slot="title">
+              <i class="el-icon-star-on"></i>
+              <span>Recommendation</span>
+            </template>
+            <el-menu-item index="/recommendationList">Recommendation List</el-menu-item>
+          </el-submenu>
 
         </el-menu>
       </div>
@@ -84,6 +119,8 @@ import Cookies from 'js-cookie'
 
 export default {
   name: "Layout",
+  components: {},
+
   data(){
     return{
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {}

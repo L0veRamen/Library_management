@@ -53,6 +53,22 @@ const routes = [
       {path: 'bookList', name: 'BookList', component: ()=> import('@/views/book/List.vue')},
       {path: 'addBook', name: 'AddBook', component: ()=> import('@/views/book/Add.vue')},
       {path: 'editBook', name: 'EditBook', component: ()=> import('@/views/book/Edit.vue')},
+
+      // ======== Favourite ===========
+      {path: 'favList', name: 'FavList', component: ()=> import('@/views/fav/List.vue')},
+      {path: 'editFav', name: 'EditFav', component: ()=> import('@/views/fav/Edit.vue')},
+      // ======== Read ===========
+      {path: 'readList', name: 'ReadList', component: ()=> import('@/views/read/List.vue')},
+      {path: 'editRead', name: 'EditRead', component: ()=> import('@/views/read/Edit.vue')},
+      // ======== Reading ===========
+      {path: 'readingList', name: 'ReadingList', component: ()=> import('@/views/reading/List.vue')},
+      {path: 'editReading', name: 'EditReading', component: ()=> import('@/views/reading/Edit.vue')},
+      // ======== Reading ===========
+      {path: 'toReadList', name: 'ToReadList', component: ()=> import('@/views/toRead/List.vue')},
+      {path: 'editToRead', name: 'EditToRead', component: ()=> import('@/views/toRead/Edit.vue')},
+      // ======== Recommendation ===========
+      {path: 'recommendationList', name: 'RecommendationList', component: ()=> import('@/views/recommendation/List.vue')},
+
     ]
   },
 

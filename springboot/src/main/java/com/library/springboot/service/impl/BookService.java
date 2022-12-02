@@ -40,7 +40,7 @@ public class BookService implements IBookService {
         String cover = obj.getCover();
         obj.setCategory(categories.get(0));
         obj.setFavourite(false); // default set false to favourite
-        if (cover == null){
+        if (cover == null) {
             obj.setCover("https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"); //set default cover
         }
         bookMapper.save(obj);
@@ -53,9 +53,15 @@ public class BookService implements IBookService {
 
     @Override
     public void update(Book obj) {
+        String cate = obj.getCategory();
         List<String> categories = obj.getCategories();
-
+        if (categories.isEmpty()) {
+            categories.add(0, cate);
+        }
         obj.setCategory(categories.get(0));
+
+        obj.setFavourite(!obj.isFavourite());
+
         obj.setUpdatetime(LocalDate.now());
         bookMapper.updateById(obj);
     }

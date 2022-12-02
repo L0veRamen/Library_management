@@ -33,7 +33,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="author" label="author"></el-table-column>
-      <el-table-column prop="publisher" label="publisher" width="100"></el-table-column>
+      <el-table-column prop="publisher" label="publisher"></el-table-column>
       <el-table-column prop="category" label="category"></el-table-column>
       <el-table-column prop="bookNo" label="bookNo"></el-table-column>
 <!--      <el-table-column prop="createtime" label="createtime"></el-table-column>-->
@@ -79,7 +79,7 @@ import request from "@/utils/request";
 import Cookies from "js-cookie";
 
 export default {
-  name: 'BookList',
+  name: 'toReadList',
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     load() {
-      request.get('/book/page', {
+      request.get('/toRead/page', {
         params: this.params
       }).then(res => {
         if (res.code === '200') {
