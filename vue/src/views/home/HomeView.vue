@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div class="item"> Username: {{admin.username}}</div>
-    <div class="item">Phone: {{admin.phone}}</div>
-    <div class="item">Email: {{admin.email}}</div>
+    <el-card class="box-card">
+      <h1 class="title">Welcome to My Book Library</h1>
+
+      <div class="item"> username: {{admin.username}}</div>
+      <div class="item"> Phone: {{admin.phone}}</div>
+      <div class="item"> Email: {{admin.email}}</div>
+    </el-card>
   </div>
+
 </template>
 
 <script>
@@ -26,7 +31,15 @@ export default {
 </script>
 
 <style>
-.item{
-  margin: 10px 0
+
+
+.item {
+  padding: 18px 0;
+  margin:10px 0;
 }
+
+.box-card {
+  width: 600px;
+}
+
 </style>

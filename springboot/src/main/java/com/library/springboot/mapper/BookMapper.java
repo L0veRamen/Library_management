@@ -2,6 +2,7 @@ package com.library.springboot.mapper;
 
 import com.library.springboot.controller.request.BaseRequest;
 import com.library.springboot.entity.Book;
+import com.library.springboot.entity.UpdateBook;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -19,7 +20,9 @@ public interface BookMapper {
 
     Book getById(Integer id);
 
-    void updateById(Book obj);
+    void updateById(UpdateBook obj);
+
+    void updateByFav(Book obj);
 
     void deleteById(Integer id);
 

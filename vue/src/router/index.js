@@ -53,6 +53,18 @@ const routes = [
       {path: 'bookList', name: 'BookList', component: ()=> import('@/views/book/List.vue')},
       {path: 'addBook', name: 'AddBook', component: ()=> import('@/views/book/Add.vue')},
       {path: 'editBook', name: 'EditBook', component: ()=> import('@/views/book/Edit.vue')},
+
+      // ======== Favourite ===========
+      {path: 'favList', name: 'FavList', component: ()=> import('@/views/fav/List.vue')},
+      // ======== Read ===========
+      {path: 'readList', name: 'readList', component: ()=> import('@/views/read/List.vue')},
+      // ======== Reading ===========
+      {path: 'readingList', name: 'readingList', component: ()=> import('@/views/reading/List.vue')},
+      // ======== Reading ===========
+      {path: 'toReadList', name: 'toReadList', component: ()=> import('@/views/toRead/List.vue')},
+      // ======== Recommendation ===========
+      {path: 'recommendationList', name: 'RecommendationList', component: ()=> import('@/views/recommendation/List.vue')},
+
     ]
   },
 

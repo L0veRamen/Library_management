@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.springboot.controller.request.BaseRequest;
 import com.library.springboot.entity.Book;
+import com.library.springboot.entity.UpdateBook;
 import com.library.springboot.mapper.BookMapper;
 import com.library.springboot.service.IBookService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +41,7 @@ public class BookService implements IBookService {
         String cover = obj.getCover();
         obj.setCategory(categories.get(0));
         obj.setFavourite(false); // default set false to favourite
-        if (cover == null){
+        if (cover == null) {
             obj.setCover("https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"); //set default cover
         }
         bookMapper.save(obj);
@@ -52,12 +53,15 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public void update(Book obj) {
-        List<String> categories = obj.getCategories();
-
-        obj.setCategory(categories.get(0));
+    public void update(UpdateBook obj) {
         obj.setUpdatetime(LocalDate.now());
         bookMapper.updateById(obj);
+    }
+    @Override
+    public void updateByFav(Book obj) {
+        obj.setFavourite(!obj.isFavourite());
+        obj.setUpdatetime(LocalDate.now());
+        bookMapper.updateByFav(obj);
     }
 
     @Override
