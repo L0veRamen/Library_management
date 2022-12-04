@@ -1,7 +1,9 @@
 package com.library.springboot.mapper;
 
 import com.library.springboot.controller.request.BaseRequest;
+import com.library.springboot.entity.FavItem;
 import com.library.springboot.entity.Favourite;
+import com.library.springboot.entity.UpdateBook;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,16 +12,18 @@ import java.util.List;
 public interface FavMapper {
 
 
-    List<Favourite> list();
+    List<FavItem> list();
 
     List<Favourite> listByCondition(BaseRequest baseRequest);
 
-    void save(Favourite obj);
+    void save(UpdateBook obj);
 
     Favourite getById(Integer id);
 
     void updateById(Favourite obj);
 
-    void deleteById(Integer id);
+    void changeFav(Favourite obj);
+
+    void deleteById(UpdateBook obj);
 
 }

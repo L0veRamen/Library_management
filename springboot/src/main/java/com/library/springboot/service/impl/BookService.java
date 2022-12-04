@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.springboot.controller.request.BaseRequest;
 import com.library.springboot.entity.Book;
+import com.library.springboot.entity.UpdateBook;
 import com.library.springboot.mapper.BookMapper;
 import com.library.springboot.service.IBookService;
 import lombok.extern.slf4j.Slf4j;
@@ -52,18 +53,15 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public void update(Book obj) {
-        String cate = obj.getCategory();
-        List<String> categories = obj.getCategories();
-        if (categories.isEmpty()) {
-            categories.add(0, cate);
-        }
-        obj.setCategory(categories.get(0));
-
-        obj.setFavourite(!obj.isFavourite());
-
+    public void update(UpdateBook obj) {
         obj.setUpdatetime(LocalDate.now());
         bookMapper.updateById(obj);
+    }
+    @Override
+    public void updateByFav(Book obj) {
+        obj.setFavourite(!obj.isFavourite());
+        obj.setUpdatetime(LocalDate.now());
+        bookMapper.updateByFav(obj);
     }
 
     @Override

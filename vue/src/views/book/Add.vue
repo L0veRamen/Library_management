@@ -65,6 +65,9 @@ export default {
   },
   methods:{
     save(){
+      this.form.toread = true
+      this.form.rankscore = 1
+      // this.form.readstatus = 'To Read'
       this.$refs['ruleForm'].validate((valid) => {
         if (valid) {
           request.post('/book/save', this.form).then(res =>{

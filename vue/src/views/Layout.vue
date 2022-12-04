@@ -26,20 +26,20 @@
     <div style="display: flex">
       <!--      left panel navigation-->
       <div
-          style="width: 230px; min-height: calc(100vh - 62px);overflow: hidden; margin-right: 2px; background-color: white">
+          style="min-width: 230px; min-height: calc(100vh - 62px);overflow: hidden; margin-right: 2px; background-color: white ">
         <el-menu :default-active="$route.path" router class="el-menu-demo">
           <el-menu-item index="/">
             <i class="el-icon-collection"></i>
             <span>Main Page</span>
           </el-menu-item>
-          <el-submenu index="user">
-            <template slot="title">
-              <i class="el-icon-notebook-1"></i>
-              <span>User</span>
-            </template>
-            <el-menu-item index="/addUser">User Add</el-menu-item>
-            <el-menu-item index="/userList">User List</el-menu-item>
-          </el-submenu>
+<!--          <el-submenu index="user">-->
+<!--            <template slot="title">-->
+<!--              <i class="el-icon-notebook-1"></i>-->
+<!--              <span>User</span>-->
+<!--            </template>-->
+<!--            <el-menu-item index="/addUser">User Add</el-menu-item>-->
+<!--            <el-menu-item index="/userList">User List</el-menu-item>-->
+<!--          </el-submenu>-->
           <el-submenu index="admin">
             <template slot="title">
               <i class="el-icon-s-custom"></i>
@@ -48,14 +48,14 @@
             <el-menu-item index="/addAdmin">Admin Add</el-menu-item>
             <el-menu-item index="/adminList">Admin List</el-menu-item>
           </el-submenu>
-          <el-submenu index="category">
-            <template slot="title">
-              <i class="el-icon-document"></i>
-              <span>Category</span>
-            </template>
-            <el-menu-item index="/addCategory">Add Category</el-menu-item>
-            <el-menu-item index="/categoryList">Category List</el-menu-item>
-          </el-submenu>
+<!--          <el-submenu index="category">-->
+<!--            <template slot="title">-->
+<!--              <i class="el-icon-document"></i>-->
+<!--              <span>Category</span>-->
+<!--            </template>-->
+<!--            <el-menu-item index="/addCategory">Add Category</el-menu-item>-->
+<!--            <el-menu-item index="/categoryList">Category List</el-menu-item>-->
+<!--          </el-submenu>-->
           <el-submenu index="book">
             <template slot="title">
               <i class="el-icon-notebook-1"></i>
@@ -83,7 +83,7 @@
               <i class="el-icon-notebook-2"></i>
               <span>Reading</span>
             </template>
-            <el-menu-item index="/readList">Reading List</el-menu-item>
+            <el-menu-item index="/readingList">Reading List</el-menu-item>
           </el-submenu>
           <el-submenu index="toRead">
             <template slot="title">
@@ -104,7 +104,7 @@
       </div>
 
       <!--      main body-->
-      <div style="flex:1; background-color: white; padding: 10px">
+      <div style="flex:1; background-color: white; padding: 10px; min-width: 700px">
         <!--      open children router-->
         <router-view/>
       </div>

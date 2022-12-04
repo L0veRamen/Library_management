@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class Book extends BaseEntity implements Serializable {
+public class UpdateBook extends BaseEntity implements Serializable {
 
     private String name;
     private String description;
@@ -17,12 +17,16 @@ public class Book extends BaseEntity implements Serializable {
     private String category;
     private String bookNo;
 
+    private String bookid;
+    private Integer userid;
     private List<String> categories;
+
     private boolean toread;
     private boolean reading;
     private boolean finishread;
 
     private String readstatus;
-    private Integer rankscore;
+
+
 
 }

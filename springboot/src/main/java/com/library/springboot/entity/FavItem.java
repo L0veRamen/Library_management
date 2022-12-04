@@ -2,12 +2,10 @@ package com.library.springboot.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 @Data
-public class Favourite extends BaseEntity implements Serializable {
+public class FavItem {
+    private Integer id;
     private Integer userid;
     private Integer bookid;
     private boolean favourite;
-
 }

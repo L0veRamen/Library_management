@@ -21,8 +21,8 @@
     </select>
 
     <insert id="save">
-        insert into favourite(name, description, favourite, cover, author, publisher, category, book_no)
-        values(#{name},#{description},false,#{cover},#{author},#{publisher},#{category},#{bookNo})
+        insert into favourite(userid, bookid, favourite)
+        values(#{userid},#{id},#{favourite})
     </insert>
 
     <update id="updateById">
@@ -31,17 +31,24 @@
         updatetime = #{updatetime} where id = #{id}
     </update>
 
+    <update id="changeFav">
+        update favourite set favourite = #{favourite},
+        userid = #{userid}, bookid = #{bookid},
+        updatetime = #{updatetime} where id = #{id}
+    </update>
+
+
     <delete id="deleteById">
-        delete from favourite where id = #{id}
+        delete from favourite where bookid = #{id} and userid = #{userid}
     </delete>
 
-    <select id="list" resultType="com.library.springboot.entity.Favourite">
-        select * from book where favourite = true order by id desc
+    <select id="list" resultType="com.library.springboot.entity.FavItem">
+        select * from favourite
     </select>
 
 
     <select id="getById" resultType="com.library.springboot.entity.Favourite">
-        select * from favourite where id = #{id}
+        select * from favourite where bookid = #{id}
     </select>
 
 

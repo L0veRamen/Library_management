@@ -3,7 +3,9 @@ package com.library.springboot.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.library.springboot.controller.request.BaseRequest;
+import com.library.springboot.entity.FavItem;
 import com.library.springboot.entity.Favourite;
+import com.library.springboot.entity.UpdateBook;
 import com.library.springboot.mapper.FavMapper;
 import com.library.springboot.service.IFavService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +24,7 @@ public class FavService implements IFavService {
 
 
     @Override
-    public List<Favourite> list() {
+    public List<FavItem> list() {
         return favMapper.list();
     }
 
@@ -35,13 +37,17 @@ public class FavService implements IFavService {
     }
 
     @Override
-    public void save(Favourite obj) {
-        obj.setCategory(obj.getCategory());
-        obj.setFavourite(false); // default set false to favourite
-        if (obj.getCover() == null) {
-            obj.setCover("https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"); //set default cover
-        }
+    public void save(UpdateBook obj) {
         favMapper.save(obj);
+
+
+
+//        obj.setCategory(obj.getCategory());
+//        obj.setFavourite(false); // default set false to favourite
+//        if (obj.getCover() == null) {
+//            obj.setCover("https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"); //set default cover
+//        }
+//        favMapper.save(obj);
     }
 
     @Override
@@ -49,17 +55,26 @@ public class FavService implements IFavService {
         return favMapper.getById(id);
     }
 
+
+
     @Override
     public void update(Favourite obj) {
 
-        obj.setFavourite(!obj.isFavourite());
+//        obj.setFavourite(!obj.isFavourite());
 
         obj.setUpdatetime(LocalDate.now());
         favMapper.updateById(obj);
     }
-
     @Override
-    public void deleteById(Integer id) {
-        favMapper.deleteById(id);
+    public void changeFav(Favourite obj) {
+
+//        obj.setFavourite(!obj.isFavourite());
+
+        obj.setUpdatetime(LocalDate.now());
+        favMapper.changeFav(obj);
+    }
+    @Override
+    public void deleteById(UpdateBook obj) {
+        favMapper.deleteById(obj);
     }
 }

@@ -15,11 +15,14 @@
         <el-input v-model="form.publisher" placeholder="please enter publisher"></el-input>
       </el-form-item>
       <el-form-item label="category" prop="category">
-        <el-cascader
-            :props="{value:'name', label:'name'}"
-            v-model="form.categories"
-            :options="categories"
-            ></el-cascader>
+        <el-select v-model="form.category" placeholder="请选择">
+          <el-option
+              v-for="item in categories"
+              :key="item.name"
+              :label="item.name"
+              :value="item.name">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="book Number" prop="bookNo">
         <el-input v-model="form.bookNo" placeholder="please enter book Number"></el-input>
@@ -70,8 +73,9 @@ export default {
   },
   methods:{
     save(){
-      request.put('/book/update', this.form).then(res =>{
-        console.log("form data: "+this.form)
+
+      request.post('/book/update', this.form).then(res =>{
+        console.log("form data: ",this.form)
         if (res.code === '200'){
           this.$notify.success('Update book Successfully')
           this.$router.push("/bookList")// direct to book list page

@@ -56,16 +56,12 @@ const routes = [
 
       // ======== Favourite ===========
       {path: 'favList', name: 'FavList', component: ()=> import('@/views/fav/List.vue')},
-      {path: 'editFav', name: 'EditFav', component: ()=> import('@/views/fav/Edit.vue')},
       // ======== Read ===========
-      {path: 'readList', name: 'ReadList', component: ()=> import('@/views/read/List.vue')},
-      {path: 'editRead', name: 'EditRead', component: ()=> import('@/views/read/Edit.vue')},
+      {path: 'readList', name: 'readList', component: ()=> import('@/views/read/List.vue')},
       // ======== Reading ===========
-      {path: 'readingList', name: 'ReadingList', component: ()=> import('@/views/reading/List.vue')},
-      {path: 'editReading', name: 'EditReading', component: ()=> import('@/views/reading/Edit.vue')},
+      {path: 'readingList', name: 'readingList', component: ()=> import('@/views/reading/List.vue')},
       // ======== Reading ===========
-      {path: 'toReadList', name: 'ToReadList', component: ()=> import('@/views/toRead/List.vue')},
-      {path: 'editToRead', name: 'EditToRead', component: ()=> import('@/views/toRead/Edit.vue')},
+      {path: 'toReadList', name: 'toReadList', component: ()=> import('@/views/toRead/List.vue')},
       // ======== Recommendation ===========
       {path: 'recommendationList', name: 'RecommendationList', component: ()=> import('@/views/recommendation/List.vue')},
 
