@@ -12,7 +12,7 @@ This is COMP354 Project -- My Book Library
 __username__: admin <br>
 __passsword__: test123
 
-Screen shot of functionality:
+##Screen shot of functionality:
 
 ![image](https://user-images.githubusercontent.com/53376484/205471121-d51ab1de-4f2d-454f-b9c9-d51282b5d6c7.png)
 
